@@ -14,20 +14,21 @@ void leap(){
     }
 }
 
-void prime(){
+int prime(int num){
     // prime number
-    int num,fc=0;
-    cout<<"enter number";
-    cin>>num;
+    int fc=0;
+    // cout<<"enter number";
+    // cin>>num;
     for(int i=1;i<=num/2;i++){
         if(num%i==0){
             fc++;
         }
     }
     if(fc==1){
-        cout<<num<<"is prime number";
+        // cout<<num<<"is prime number";
+        return 1;
     }else{
-        cout<<num<<"is not a prime number";
+        return 0;
     }
 }
 
@@ -89,18 +90,163 @@ void pallindrome(){
 }
 
 void armstrong(){
-    // int num,nDigit=0,sum=0,cp,rem;
-    // cout<<"enter the number";
-    // cin>>num;
-    // cp=num;
-    // while(cp!=0){
-        
-        
-    // }
+    int num,nDigit=0,sum=0,cp,rem;
+    cout<<"enter the number";
+    cin>>num;
+    cp=num;
+    while(cp!=0){       
+        nDigit++;
+        cp/=10;        
+    }
+    cp=num;
+    while(cp!=0){
+        rem=cp%10;
+        sum+=pow(rem,nDigit);
+        cp/=10;
+    }
+    if(sum==num) cout<<num<<"is armstrong number";
 
 }
 
+void armstrong_range(){
+    int num,nDigit=0,sum=0,cp,rem,range;
+    cout<<"enter the number";
+    cin>>range;
+    for(int i=1;i<=range;i++){
+        num=i;
+        sum=0;
+        cp=num;
+        nDigit=0;
+    while(cp!=0){       
+        nDigit++;
+        cp/=10;        
+    }
+    cp=num;
+    while(cp!=0){
+        rem=cp%10;
+        sum+=pow(rem,nDigit);
+        cp/=10;
+    }
+    if(sum==num) cout<<num<<" ";
+    }
+    
+
+}
+
+void fibonacci(){
+    int n=0,x=1,y,term;
+    cout<<"enter the term";
+    cin>>term;
+    cout<<n<<" "<<x<<" ";
+    for(int i =0;i<=term-2;i++){
+        y=n+x;
+        n=x,x=y;
+        // cout<<y<<" ";
+    }
+    // for nth term 
+    cout<<y<<" ";
+
+}
+
+void power(){
+    int base,expo;
+    float res=1;
+    cout<<"enter base and expo";
+    cin>>base>>expo;
+    if(expo>0){
+        while(expo!=0){
+            res*=base;
+            expo--;
+        }
+    }
+    if(expo<0){
+        while(expo<0){
+            res/=base;
+            expo++;
+        }
+    }
+    cout<<"result"<<res;
+}
+
+void factor(){
+    int num;
+    cout<<"enter a number";
+    cin>>num;
+    for(int i=1;i<=sqrt(num);i++){
+        if(num%i==0){
+            if(i==num/i){
+                // if(prime(i)){
+                    cout<<i<<"";
+                // }
+            }else{
+                //  if(prime(i)){
+                cout<<i <<" ";
+                
+            // }
+            // if(prime(num/i)){
+                cout<<num/i<<" ";
+            // }
+        }
+    }
+}}
+
+int factorial_nums(int n){
+    int res=1;
+ for(int i=1;i<=n;i++){
+    res*=i;
+ }
+ return res;
+}
+
+void strong_num(){
+    int num,sum=0,rem,cp;
+    cout<<"enter the number";
+    cin>>num;
+    cp=num;
+    while(cp!=0){
+        rem=cp%10;
+        sum+=factorial_nums(rem);
+        cp/=10;
+    }
+    if(num==sum){
+        cout<<num<<"is a strong 💪 number";
+    }
+}
+
+void perfect_number(){
+    int num,sum=0;
+    cout<<"enter a number";
+    cin>>num;
+    for(int i=1;i<=sqrt(num);i++){
+        if(num%i==0){
+            if(i==num/i){
+                // if(prime(i)){
+                    sum+=i;
+                    cout<<i<<endl;
+                // }
+            }else{
+                //  if(prime(i)){
+                sum+=i;
+                    cout<<i<<endl;
+                // 
+            // }
+            if(num/i!=num){
+                sum+=num/i;
+                cout<<num/i<<endl;
+            }
+        }
+        if(i==1){
+            sum+=i;
+        }
+        
+    }}
+    cout<<"sum"<<sum<<"num"<<num;
+    if(num==sum){
+        cout<<"perfect number"<<num;
+    }
+}
+
 int main(){
-    pallindrome();
+    perfect_number();
     return 0;
 }
